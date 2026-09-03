@@ -28,7 +28,9 @@ Route::get('/pizzas/{pizza}', function (Pizza $pizza) {
 Route::post('/pizzas/', [PizzaController::class, 'store']);
 Route::put('/pizzas/{pizza}/toppings', [PizzaController::class, 'update']);
 Route::delete('/pizzas/{pizza}/toppings', [PizzaToppingController::class, 'destroy']);
-Route::post('/orders', [OrderController::class, 'store']);
+Route::post('/orders/', [OrderController::class, 'store']);
 Route::post('/orders/{order}/items', [OrderController::class, 'addItem']);
+Route::delete('/orders/{order}/items/{order_item}', [OrderController::class, 'removeItem']);
 Route::put('/orders/{order}', [OrderController::class, 'update']);
-Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/orders/{order}/coupon', [OrderController::class, 'applyCoupon']);
+Route::post('/orders/{order}/place', [OrderController::class, 'place']);

@@ -15,7 +15,8 @@ class PizzaResource extends JsonApiResource
      */
     public array $attributes = [
         'name',
-        'size'
+        'size',
+        'price'
     ];
 
     /**

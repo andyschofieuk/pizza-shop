@@ -39,6 +39,8 @@ class PizzaController extends Controller
             'custom' => true
         ]);
 
+        $pizza = $pizza->calculatePrice();
+
         $pizza->load('toppings');
         return new PizzaResource($pizza);
     }
@@ -89,6 +91,8 @@ class PizzaController extends Controller
                 ]);
             }
         }
+
+        $pizza = $pizza->calculatePrice();
 
         $pizza->load('toppings');
         return new PizzaResource($pizza);

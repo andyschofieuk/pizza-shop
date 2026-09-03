@@ -41,16 +41,18 @@ class PizzaSeeder extends Seeder
         foreach ($pizzaNames as $pizzaName) {
             Pizza::factory(10)->create(['name' => $pizzaName . ' Pizza']);
         }
-        $pizzas = Pizza::all('id');
+        $pizzas = Pizza::all();
 
         foreach ($pizzas as $pizza) {
             $amount = rand(1, 5);
             for($i = 0; $i < $amount; $i++) {
                 PizzaTopping::factory()->create([
-                    'pizza_id' => $pizza,
+                    'pizza_id' => $pizza['id'],
                     'topping_id' => $toppings[array_rand($toppings)]['id'],
                 ]);
             }
+
+            $pizza->calculatePrice();
         }
     }
 }

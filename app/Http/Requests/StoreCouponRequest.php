@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOrderItemRequest extends FormRequest
+class StoreCouponRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,7 @@ class UpdateOrderItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'item_type' => 'required|in:pizza,drink',
-            'item_id' => 'required',
-            'qty' => 'required|int|min:1'
+            'coupon' => 'required|exists:coupons,code'
         ];
     }
 }
